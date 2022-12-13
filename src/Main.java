@@ -19,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+//        @armTest:
 //        Scanner scanner = new Scanner(System.in);
 //        SCHEDULE.addTask(new SingleTask("SingleTest", "Test", LocalDateTime.now(), WORK));
 //        SCHEDULE.addTask(new DailyTask("DailyTest", "Test", LocalDateTime.now().plusHours(1), PERSONAL));
@@ -28,6 +29,7 @@ public class Main {
 //        addTask(scanner);
 //        printTaskForDate(scanner);
 //        removeTasks(scanner);
+
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
@@ -93,7 +95,7 @@ public class Main {
                     System.out.println(repeatability.ordinal() + ". " + localizeRepeatability(repeatability));
                 }
                 System.out.print("Введите номер типа задачи:");
-                String ordinalLine = scanner.nextLine();
+                String ordinalLine = scanner.next();
                 int ordinal = Integer.parseInt(ordinalLine);
                 return Repeatability.values()[ordinal];
             } catch (NumberFormatException e) {
@@ -112,7 +114,7 @@ public class Main {
                     System.out.println(taskType.ordinal() + ". " + localizeType(taskType));
                 }
                 System.out.print("Введите номер типа задачи:");
-                String ordinalLine = scanner.nextLine();
+                String ordinalLine = scanner.next();
                 int ordinal = Integer.parseInt(ordinalLine);
                 return TaskType.values()[ordinal];
             } catch (NumberFormatException e) {
@@ -132,23 +134,23 @@ public class Main {
     private static String readString(String message, Scanner scanner) {
         while (true) {
             System.out.println(message);
-            String readString = scanner.nextLine();
+            String readString = scanner.next();
             if (readString == null || readString.isBlank()) {
                 System.out.println("Введено пустое значение!");
             } else {
                 return readString;
             }
-        }
+      }
     }
 
     private static LocalTime readTime(Scanner scanner) {
         while (true) {
             try {
                 System.out.print("Введите время задачи в формате hh.mm: ");
-                String dateLine = scanner.nextLine();
+                String dateLine = scanner.next();
                 return LocalTime.parse(dateLine, TIME_FORMAT);
             } catch (DateTimeParseException e) {
-                System.out.println("Введена дата в неверном формате");
+                System.out.println("Введено время в неверном формате");
             }
         }
     }
@@ -193,7 +195,7 @@ public class Main {
         while (true) {
             try {
                 System.out.print("Введите дату в формате dd.MM.yyyy: ");
-                String dateLine = scanner.nextLine();
+                String dateLine = scanner.next();
                 return LocalDate.parse(dateLine, DATE_FORMAT);
             } catch (DateTimeParseException e) {
                 System.out.println("Введена дата в неверном формате");
